@@ -2822,3 +2822,22 @@ mark.search-keyword {
     margin-bottom: 10px;
   }
 }
+body {
+  background: url("/images/ys-2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+}
+.content-wrap {
+  opacity: 0.85;
+}
+.sidebar {
+  opacity: 0.85;
+}
+.header-inner {
+  background: #fff;
+}
+.popup {
+  opacity: 0.85;
+}
