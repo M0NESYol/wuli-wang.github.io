@@ -2830,7 +2830,7 @@ mjx-container[display="true"] + br {
   }
 }
 body {
-  background: url("/images/ys-2.jpg");
+  background: url("/images/w-2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -2843,7 +2843,7 @@ body {
   opacity: 0.85;
 }
 .header-inner {
-  background: rgba(255,255,255,0.85);
+  opacity: 0.85;
 }
 .popup {
   opacity: 0.85;
