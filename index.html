@@ -157,7 +157,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -168,7 +168,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -203,6 +203,90 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wuli-wang.github.io/2021/09/28/%E5%90%AF%E5%8F%91%E5%BC%8F%E5%90%88%E5%B9%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar1.jpg">
+      <meta itemprop="name" content="wuli-wang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wuli-wang'blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/28/%E5%90%AF%E5%8F%91%E5%BC%8F%E5%90%88%E5%B9%B6/" class="post-title-link" itemprop="url">启发式合并</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-09-28 09:35:11 / 修改时间：09:41:22" itemprop="dateCreated datePublished" datetime="2021-09-28T09:35:11+08:00">2021-09-28</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>启发式合并的大致思想是：合并的时候每次总是将小的集合往大的集合进行合并，这样时间复杂度会减小许多，但是如果采用一般的数组结构，当小集合的每个元素往大集合中插入时一个一个比较而找出适当的位置，这样的线性复杂度也是不可接受的，故应该采用优先队列的数据结构，那么插入的时间复杂度降为O（log N）,因此当需要合并操作时可以优先考虑启发式合并。</p>
+<blockquote>
+<center><font size="4">“启发式合并在合并的时候确实挺启发我的！”</font></center>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="keyword">int</span> val;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">bool</span> <span class="keyword">operator</span> &lt;(node a,node b)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> a.t&lt;b.t;<span class="comment">//时间大的在优先队列的首部</span></span><br><span class="line">&#125;</span><br><span class="line">priority_queue&lt;node&gt; Q[<span class="number">4</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="keyword">char</span> s[<span class="number">10</span>];</span><br><span class="line">	<span class="keyword">char</span> c,c1,c2;</span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	<span class="keyword">int</span> ccnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n)&amp;&amp;n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> a=<span class="number">1</span>,b=<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(Q[a].<span class="built_in">size</span>()) Q[a].<span class="built_in">pop</span>();</span><br><span class="line">		<span class="keyword">while</span>(Q[b].<span class="built_in">size</span>()) Q[b].<span class="built_in">pop</span>();</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Case #%d:\n&quot;</span>,++ccnt);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> cs=<span class="number">1</span>;cs&lt;=n;cs++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">&quot;%s &quot;</span>,s);</span><br><span class="line">			<span class="keyword">if</span>(s[<span class="number">1</span>]==<span class="string">&#x27;o&#x27;</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">scanf</span>(<span class="string">&quot;%c&quot;</span>,&amp;c);</span><br><span class="line">				<span class="keyword">if</span>(c==<span class="string">&#x27;A&#x27;</span>) </span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,Q[a].<span class="built_in">top</span>().val);</span><br><span class="line">					Q[a].<span class="built_in">pop</span>();</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,Q[b].<span class="built_in">top</span>().val);</span><br><span class="line">					Q[b].<span class="built_in">pop</span>();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(s[<span class="number">1</span>]==<span class="string">&#x27;u&#x27;</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">scanf</span>(<span class="string">&quot;%c %d&quot;</span>,&amp;c,&amp;x);</span><br><span class="line">				<span class="keyword">if</span>(c==<span class="string">&#x27;A&#x27;</span>) Q[a].<span class="built_in">push</span>(&#123;cnt++,x&#125;);</span><br><span class="line">				<span class="keyword">else</span> Q[b].<span class="built_in">push</span>(&#123;cnt++,x&#125;);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">scanf</span>(<span class="string">&quot;%c %c&quot;</span>,&amp;c1,&amp;c2);</span><br><span class="line">				<span class="comment">//总是将B栈合并至A栈，但是若A栈的大小比B栈小，交换a、b的值，保证小栈合并至大栈</span></span><br><span class="line">				<span class="keyword">if</span>(Q[a].<span class="built_in">size</span>()&lt;Q[b].<span class="built_in">size</span>()) <span class="built_in">swap</span>(a,b);</span><br><span class="line">				<span class="keyword">while</span>(Q[b].<span class="built_in">size</span>())</span><br><span class="line">				&#123;</span><br><span class="line">					Q[a].<span class="built_in">push</span>(Q[b].<span class="built_in">top</span>());</span><br><span class="line">					Q[b].<span class="built_in">pop</span>();</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span>(c1==<span class="string">&#x27;B&#x27;</span>) <span class="built_in">swap</span>(a,b);<span class="comment">//每次合并都是合并至A栈，若输入要求合并至B栈，则交换a、b的值即可</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1039,13 +1123,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">55k</span>
+    <span title="站点总字数">56k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:40</span>
+    <span title="站点阅读时长">1:43</span>
   </span>
 </div>
 <div class="busuanzi-count">
