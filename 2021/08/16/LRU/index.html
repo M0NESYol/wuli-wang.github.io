@@ -20,23 +20,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wuli-wang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta property="og:type" content="website">
-<meta property="og:title" content="wuli-wang&#39;blog">
-<meta property="og:url" content="https://wuli-wang.github.io/page/2/index.html">
+<meta name="description" content="“LRU，你真是一个LRU!”  LRU的简单实现题意：给出n个作业，问至少要多少块物理存储空间（cache），才能使得执行该n个作业时有k次能在cache中访问某个作业而不用发生中断  cache块越大越有可能使某个作业能在cache中被访问到，容易想到答案是单调的，因此二分cache块的大小。 本来以为是个傻逼题，想着用链表和数组去模拟，主要是被上次那道题的思路带偏了，若该作业已经存在与ca">
+<meta property="og:type" content="article">
+<meta property="og:title" content="String">
+<meta property="og:url" content="https://wuli-wang.github.io/2021/08/16/LRU/index.html">
 <meta property="og:site_name" content="wuli-wang&#39;blog">
+<meta property="og:description" content="“LRU，你真是一个LRU!”  LRU的简单实现题意：给出n个作业，问至少要多少块物理存储空间（cache），才能使得执行该n个作业时有k次能在cache中访问某个作业而不用发生中断  cache块越大越有可能使某个作业能在cache中被访问到，容易想到答案是单调的，因此二分cache块的大小。 本来以为是个傻逼题，想着用链表和数组去模拟，主要是被上次那道题的思路带偏了，若该作业已经存在与ca">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-16T07:06:48.000Z">
+<meta property="article:modified_time" content="2021-10-30T13:58:51.166Z">
 <meta property="article:author" content="wuli-wang">
+<meta property="article:tag" content="数据结构，优先队列">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://wuli-wang.github.io/page/2/">
+<link rel="canonical" href="https://wuli-wang.github.io/2021/08/16/LRU/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"page/2/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wuli-wang.github.io/2021/08/16/LRU/","path":"2021/08/16/LRU/","title":"String"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>wuli-wang'blog</title>
+<title>String | wuli-wang'blog</title>
   
 
 
@@ -129,7 +134,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -142,6 +147,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#LRU%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.</span> <span class="nav-text">LRU的简单实现</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -202,224 +208,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wuli-wang.github.io/2021/08/28/%E5%AE%9E%E7%94%A8%E5%81%9A%E9%A2%98%E6%8A%80%E5%B7%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar1.jpg">
-      <meta itemprop="name" content="wuli-wang">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wuli-wang'blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/28/%E5%AE%9E%E7%94%A8%E5%81%9A%E9%A2%98%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">C/C++</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-08-28 10:16:57" itemprop="dateCreated datePublished" datetime="2021-08-28T10:16:57+08:00">2021-08-28</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-05 09:29:57" itemprop="dateModified" datetime="2021-10-05T09:29:57+08:00">2021-10-05</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/C-C/" itemprop="url" rel="index"><span itemprop="name">C/C++</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>14k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>25 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<center><font size="4">“海兰珠”</font></center>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/08/28/%E5%AE%9E%E7%94%A8%E5%81%9A%E9%A2%98%E6%8A%80%E5%B7%A7/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wuli-wang.github.io/2021/08/16/String/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar1.jpg">
-      <meta itemprop="name" content="wuli-wang">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wuli-wang'blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/16/String/" class="post-title-link" itemprop="url">String</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-08-16 15:06:48" itemprop="dateCreated datePublished" datetime="2021-08-16T15:06:48+08:00">2021-08-16</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-17 19:13:24" itemprop="dateModified" datetime="2021-10-17T19:13:24+08:00">2021-10-17</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/" itemprop="url" rel="index"><span itemprop="name">字符串</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>35k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1:03</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<center><font size="4">“听君一席话，如听一席话”</font></center>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/08/16/String/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://wuli-wang.github.io/2021/08/16/LRU/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -432,9 +231,9 @@
       <meta itemprop="name" content="wuli-wang'blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/16/LRU/" class="post-title-link" itemprop="url">String</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          String
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -464,6 +263,13 @@
     </span>
 
   
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
     <span class="post-meta-break"></span>
     <span class="post-meta-item" title="本文字数">
       <span class="post-meta-item-icon">
@@ -488,7 +294,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <blockquote>
+        <blockquote>
 <center><font size="4">“LRU，你真是一个LRU!”</font></center>
 </blockquote>
 <h2 id="LRU的简单实现"><a href="#LRU的简单实现" class="headerlink" title="LRU的简单实现"></a>LRU的简单实现</h2><p>题意：给出n个作业，问至少要多少块物理存储空间（cache），才能使得执行该n个作业时有k次能在cache中访问某个作业而不用发生中断</p>
@@ -498,7 +304,6 @@
 <li>由于知道替换时是替换最久未访问的也就是时间最小的，那么应该想到用优先队列来维护一下即可，每次弹出一个最小时间（即最久未访问的）的作业。但是当一个作业来到时该作业在内存中存在时需要更新该作业的时间（进入cache的时间），有了上面的思路后容易知道，改变之后该作业总是在cache中的，所以不需要进行遍历优先队列将该作业弹出更新时间后再压入，那么就只要用mp记录更新该作业的时间即可，如果某次替换操作弹出了该作业但是发现其时间已经被更新了那么就将该就作业弹出更新时间后再压入优先队列中，此时再弹出一个时间最小的进行替换直到弹出作业的时间与记录的该作业的时间一致时说明该作业的访问时间没有被更新，那么就替换掉该作业。<br><a target="_blank" rel="noopener" href="https://codeforces.com/gym/103366/problem/J">LRU</a><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; PII;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> debug(x) cout&lt;&lt;#x&lt;&lt;<span class="meta-string">&quot;: &quot;</span>&lt;&lt;x&lt;&lt;endl</span></span><br><span class="line"><span class="keyword">int</span> ne[N],val[N],a[N],n,k;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> t;	</span><br><span class="line">	<span class="keyword">int</span> w;</span><br><span class="line">	<span class="built_in">Node</span> (<span class="keyword">int</span> a,<span class="keyword">int</span> b)&#123;</span><br><span class="line">		t=a;</span><br><span class="line">		w=b;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cmp</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="function"><span class="keyword">bool</span> <span class="title">operator</span> <span class="params">()</span><span class="params">(Node a,Node b)</span><span class="comment">//同运算符&#x27;&lt;&#x27;</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> a.t&gt;b.t;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">unordered_map&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; mp;</span><br><span class="line">priority_queue&lt;Node,vector&lt;Node&gt;,cmp&gt; pq;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> mid)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(pq.<span class="built_in">size</span>()) pq.<span class="built_in">pop</span>();</span><br><span class="line">	mp.<span class="built_in">clear</span>();</span><br><span class="line">	<span class="keyword">int</span> time=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		time++;</span><br><span class="line">		<span class="keyword">if</span>(i==<span class="number">1</span>) </span><br><span class="line">		&#123;</span><br><span class="line">			pq.<span class="built_in">push</span>(&#123;time,a[i]&#125;);</span><br><span class="line">			mp[a[i]]=time;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(!mp[a[i]])<span class="comment">//作业不在cache中</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(pq.<span class="built_in">size</span>()&lt;mid)<span class="comment">//cache空间还有剩余直接压入</span></span><br><span class="line">				&#123;</span><br><span class="line">					pq.<span class="built_in">push</span>(&#123;time,a[i]&#125;);</span><br><span class="line">					mp[a[i]]=time;<span class="comment">//记录时间</span></span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">				&#123;</span><br><span class="line">					Node x=pq.<span class="built_in">top</span>();</span><br><span class="line">					<span class="keyword">while</span>(x.t!=mp[x.w])<span class="comment">//弹出作业的时间与记录的时间不符，说明后续被重新访问过</span></span><br><span class="line">					&#123;</span><br><span class="line">						pq.<span class="built_in">pop</span>();</span><br><span class="line">						pq.<span class="built_in">push</span>(&#123;mp[x.w],x.w&#125;);<span class="comment">//弹出旧的作业及其时间，压入作业及其新的时间</span></span><br><span class="line">						x=pq.<span class="built_in">top</span>();</span><br><span class="line">					&#125;	</span><br><span class="line">					mp[x.w]=<span class="number">0</span>;</span><br><span class="line">					pq.<span class="built_in">pop</span>();</span><br><span class="line">					pq.<span class="built_in">push</span>(&#123;time,a[i]&#125;);</span><br><span class="line">					mp[a[i]]=time;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				res++;</span><br><span class="line">				mp[a[i]]=time;<span class="comment">//更改该作业的被访问时间</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(res&gt;=k) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;k;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) cin&gt;&gt;a[i];</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> low=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> high=n;</span><br><span class="line">	<span class="comment">//cout&lt;&lt;check(3)&lt;&lt;endl;</span></span><br><span class="line">	<span class="keyword">while</span>(low&lt;=high)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> mid=(high+low)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">check</span>(mid))</span><br><span class="line">		&#123;</span><br><span class="line">			high=mid<span class="number">-1</span>;</span><br><span class="line">			ans=mid;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			low=mid+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(ans==<span class="number">0</span>) cout&lt;&lt;<span class="string">&quot;cbddl&quot;</span>&lt;&lt;endl;</span><br><span class="line">	<span class="keyword">else</span> cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ul>
 
-      
     </div>
 
     
@@ -506,112 +311,24 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%8C%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" rel="tag"># 数据结构，优先队列</a>
+          </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wuli-wang.github.io/2021/08/12/Graph%20Theory/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar1.jpg">
-      <meta itemprop="name" content="wuli-wang">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wuli-wang'blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/12/Graph%20Theory/" class="post-title-link" itemprop="url">Graph Theory</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-08-12 12:12:53" itemprop="dateCreated datePublished" datetime="2021-08-12T12:12:53+08:00">2021-08-12</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-30 14:42:11" itemprop="dateModified" datetime="2021-10-30T14:42:11+08:00">2021-10-30</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%9B%BE%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">图论</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>12k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>23 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<center><font size="4">“万象神宫”</font></center>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/08/12/Graph%20Theory/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/08/12/Graph%20Theory/" rel="prev" title="Graph Theory">
+                  <i class="fa fa-chevron-left"></i> Graph Theory
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/08/16/String/" rel="next" title="String">
+                  String <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
   </article>
 </div>
@@ -619,9 +336,7 @@
 
 
 
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-  </nav>
+
 
 </div>
   </main>
