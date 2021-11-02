@@ -20,15 +20,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wuli-wang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="“妙蛙！”  bitset巧妙处理n个数可能构成的和 给定n个数，需要知道其中任意个数的和能够构成的数有哪些，按照一般的处理方法复杂度为$C_n^0+C_n^1+C_n^2+…+C_n^n$即$2^n$，这样的复杂度属实是不能接受的，但是用bitset却可以通过移位运算以及逻辑运算可以快速的解决。 首先定义bitset&lt;1e9&gt; bit,其每一位上的数若为0则表示该数没有出现，若为1">
+<meta name="description" content="“妙蛙！”">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Thinking">
 <meta property="og:url" content="https://wuli-wang.github.io/2021/10/31/Thinking/index.html">
 <meta property="og:site_name" content="wuli-wang&#39;blog">
-<meta property="og:description" content="“妙蛙！”  bitset巧妙处理n个数可能构成的和 给定n个数，需要知道其中任意个数的和能够构成的数有哪些，按照一般的处理方法复杂度为$C_n^0+C_n^1+C_n^2+…+C_n^n$即$2^n$，这样的复杂度属实是不能接受的，但是用bitset却可以通过移位运算以及逻辑运算可以快速的解决。 首先定义bitset&lt;1e9&gt; bit,其每一位上的数若为0则表示该数没有出现，若为1">
+<meta property="og:description" content="“妙蛙！”">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-10-31T11:07:04.000Z">
-<meta property="article:modified_time" content="2021-11-02T13:47:35.727Z">
+<meta property="article:modified_time" content="2021-11-02T13:51:59.227Z">
 <meta property="article:author" content="wuli-wang">
 <meta property="article:tag" content="thinking">
 <meta name="twitter:card" content="summary">
@@ -250,7 +250,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-11-02 21:47:35" itemprop="dateModified" datetime="2021-11-02T21:47:35+08:00">2021-11-02</time>
+        <time title="修改时间：2021-11-02 21:51:59" itemprop="dateModified" datetime="2021-11-02T21:51:59+08:00">2021-11-02</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -297,6 +297,7 @@
         <blockquote>
 <center><font size="4">“妙蛙！”</font></center>
 </blockquote>
+<span id="more"></span>
 <h2 id="bitset巧妙处理n个数可能构成的和"><a href="#bitset巧妙处理n个数可能构成的和" class="headerlink" title="bitset巧妙处理n个数可能构成的和"></a>bitset巧妙处理n个数可能构成的和</h2><ul>
 <li>给定n个数，需要知道其中任意个数的和能够构成的数有哪些，按照一般的处理方法复杂度为$C_n^0+C_n^1+C_n^2+…+C_n^n$即$2^n$，这样的复杂度属实是不能接受的，但是用bitset却可以通过移位运算以及逻辑运算可以快速的解决。</li>
 <li>首先定义bitset&lt;1e9&gt; bit,其每一位上的数若为0则表示该数没有出现，若为1作为表示该数出现过，并且两个数的加法运算实际就是bitset的移位操作，如2+5实际就是bitset的第二位的位置向左移5位，此时第七位置1表示7出现。因此从n个数中取任意个数的和能够构成的数值也可以利用这样的方式求得：先将第一个的数的位数置1，后续每读入一个数x就将原bitset左移x位再与原bitset进行逻辑或运算即取并集，然后将数x的位置1，最后得到的bitset即为n个数取任意个数的和能够表示的数。</li>
