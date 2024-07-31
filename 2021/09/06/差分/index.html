@@ -28,7 +28,7 @@
 <meta property="og:description" content="“盖亚！”">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-06T07:44:01.000Z">
-<meta property="article:modified_time" content="2021-09-07T12:25:53.307Z">
+<meta property="article:modified_time" content="2022-03-15T06:31:49.000Z">
 <meta property="article:author" content="wuli-wang">
 <meta property="article:tag" content="差分">
 <meta name="twitter:card" content="summary">
@@ -163,18 +163,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -250,7 +250,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-09-07 20:25:53" itemprop="dateModified" datetime="2021-09-07T20:25:53+08:00">2021-09-07</time>
+        <time title="修改时间：2022-03-15 14:31:49" itemprop="dateModified" datetime="2022-03-15T14:31:49+08:00">2022-03-15</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -299,7 +299,7 @@
 </blockquote>
 <span id="more"></span>
 <h2 id="差分"><a href="#差分" class="headerlink" title="差分"></a>差分</h2><p>给定一个长度为 n 的数列 a1,a2,…,an，每次可以选择一个区间 [l,r]，使下标在这个区间内的数都加一或者都减一。<br>求至少需要多少次操作才能使数列中的所有数都一样，并求出在保证最少次数的前提下，最终得到的数列可能有多少种。</p>
-<p>构造差分序列，$b_1=a_1,b_2=a_2-a_1 … b_n=a_n-a_n-1,b_(n+1)=0$，使得原序列的值均相等即是差分序列$b_2$至$b_n$的值为0，而每次选取选取区间[l,r]对其进行加1或减1也就是对$b_l$和$b_(r+1)$进行一加一减的操作，而内部的差分值不会改变，因此对任意区间进行此操作即为对任意两个点进行一加一减的操作，利用这个特点可以统计出差分序列正值的和的绝对值p与负值的和的绝对值q，有正有负的情形下首选对两个点一加一减的操作，这样可以使操作次数最少，次数为$min(p,q)$,剩下只有正数或负数的情形，可以选择对b1与其中某点进行操作或对$b_(n+1)$与其中某点操作，操作次数为$|p-q|$,故总次数为$|p-q|+min(p,q)=max(p,q)$,值得注意的是前一步的操作不会改变$b_1即a_1$的值，后一步的操作可以选择性的对$a_1$的值进行更改0至|p-q|次，故$a_1$的结果会有$|p-q|+1$种结果，那们最终相同的序列亦会有$|p-q|+1$种情形。<br><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/102/">acwing-100</a></p>
+<p>构造差分序列，$b_1=a_1,b_2=a_2-a_1 … b_n=a_n-a_n-1,b_(n+1)=0$，使得原序列的值均相等即是差分序列$b_2$至$b_n$的值为0，而每次选取选取区间[l,r]对其进行加1或减1也就是对$b_l$和$b_(r+1)$进行一加一减的操作，而内部的差分值不会改变，因此对任意区间进行此操作即为对任意两个点进行一加一减或一减一加的操作，利用这个特点可以统计出差分序列正值的和的绝对值p与负值的和的绝对值q，有正有负的情形下首选对两个点一加一减的操作，这样可以使操作次数最少，次数为$min(p,q)$,剩下只有正数或负数的情形，可以选择对b1与其中某点进行操作或对$b_(n+1)$与其中某点操作，操作次数为$|p-q|$,故总次数为$|p-q|+min(p,q)=max(p,q)$,值得注意的是前一步的操作不会改变$b_1即a_1$的值，后一步的操作可以选择性的对$a_1$的值进行更改0至|p-q|次，故$a_1$的结果会有$|p-q|+1$种结果，那们最终相同的序列亦会有$|p-q|+1$种情形。<br><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/102/">acwing-100</a></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">//cin.sync_with_stdio(false);</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">2e5</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF=<span class="number">0x3f3f3f3f</span>;<span class="comment">//数量级为1e9</span></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> a[N];</span><br><span class="line"><span class="keyword">int</span> b[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    ll posi=<span class="number">0</span>;</span><br><span class="line">    ll nega=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">        b[i]=a[i]-a[i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    b[i]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        posi+=(b[i]&gt;<span class="number">0</span>)?b[i]:<span class="number">0</span>;</span><br><span class="line">        nega+=(b[i]&lt;<span class="number">0</span>)?b[i]:<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ll p=posi;</span><br><span class="line">    ll q=<span class="built_in">abs</span>(nega);</span><br><span class="line">    ll ans=<span class="built_in">max</span>(p,q);</span><br><span class="line">    ll res=<span class="built_in">abs</span>(p-q);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n%lld\n&quot;</span>,ans,res+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 
@@ -316,8 +316,8 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/08/28/%E5%AE%9E%E7%94%A8%E5%81%9A%E9%A2%98%E6%8A%80%E5%B7%A7/" rel="prev" title="C/C++">
-                  <i class="fa fa-chevron-left"></i> C/C++
+                <a href="/2021/08/16/LRU/" rel="prev" title="LRU">
+                  <i class="fa fa-chevron-left"></i> LRU
                 </a>
             </div>
             <div class="post-nav-item">
@@ -344,7 +344,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -355,13 +355,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">92k</span>
+    <span title="站点总字数">168k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:47</span>
+    <span title="站点阅读时长">5:06</span>
   </span>
 </div>
 <div class="busuanzi-count">

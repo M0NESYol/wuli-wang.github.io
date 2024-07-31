@@ -20,15 +20,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wuli-wang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="“LRU，你真是一个LRU!”  LRU的简单实现题意：给出n个作业，问至少要多少块物理存储空间（cache），才能使得执行该n个作业时有k次能在cache中访问某个作业而不用发生中断  cache块越大越有可能使某个作业能在cache中被访问到，容易想到答案是单调的，因此二分cache块的大小。 本来以为是个傻逼题，想着用链表和数组去模拟，主要是被上次那道题的思路带偏了，若该作业已经存在与ca">
+<meta name="description" content="“LRU，你真是一个LRU!”">
 <meta property="og:type" content="article">
-<meta property="og:title" content="String">
+<meta property="og:title" content="LRU">
 <meta property="og:url" content="https://wuli-wang.github.io/2021/08/16/LRU/index.html">
 <meta property="og:site_name" content="wuli-wang&#39;blog">
-<meta property="og:description" content="“LRU，你真是一个LRU!”  LRU的简单实现题意：给出n个作业，问至少要多少块物理存储空间（cache），才能使得执行该n个作业时有k次能在cache中访问某个作业而不用发生中断  cache块越大越有可能使某个作业能在cache中被访问到，容易想到答案是单调的，因此二分cache块的大小。 本来以为是个傻逼题，想着用链表和数组去模拟，主要是被上次那道题的思路带偏了，若该作业已经存在与ca">
+<meta property="og:description" content="“LRU，你真是一个LRU!”">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-08-16T07:06:48.000Z">
-<meta property="article:modified_time" content="2021-10-30T13:58:51.166Z">
+<meta property="article:modified_time" content="2022-06-23T13:54:20.000Z">
 <meta property="article:author" content="wuli-wang">
 <meta property="article:tag" content="数据结构，优先队列">
 <meta name="twitter:card" content="summary">
@@ -38,10 +38,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wuli-wang.github.io/2021/08/16/LRU/","path":"2021/08/16/LRU/","title":"String"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wuli-wang.github.io/2021/08/16/LRU/","path":"2021/08/16/LRU/","title":"LRU"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>String | wuli-wang'blog</title>
+<title>LRU | wuli-wang'blog</title>
   
 
 
@@ -163,18 +163,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -232,7 +232,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          String
+          LRU
         </h1>
 
         <div class="post-meta-container">
@@ -250,7 +250,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-30 21:58:51" itemprop="dateModified" datetime="2021-10-30T21:58:51+08:00">2021-10-30</time>
+        <time title="修改时间：2022-06-23 21:54:20" itemprop="dateModified" datetime="2022-06-23T21:54:20+08:00">2022-06-23</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -297,6 +297,7 @@
         <blockquote>
 <center><font size="4">“LRU，你真是一个LRU!”</font></center>
 </blockquote>
+<span id="more"></span>
 <h2 id="LRU的简单实现"><a href="#LRU的简单实现" class="headerlink" title="LRU的简单实现"></a>LRU的简单实现</h2><p>题意：给出n个作业，问至少要多少块物理存储空间（cache），才能使得执行该n个作业时有k次能在cache中访问某个作业而不用发生中断</p>
 <ul>
 <li>cache块越大越有可能使某个作业能在cache中被访问到，容易想到答案是单调的，因此二分cache块的大小。</li>
@@ -324,8 +325,8 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/08/28/%E5%AE%9E%E7%94%A8%E5%81%9A%E9%A2%98%E6%8A%80%E5%B7%A7/" rel="next" title="C/C++">
-                  C/C++ <i class="fa fa-chevron-right"></i>
+                <a href="/2021/09/06/%E5%B7%AE%E5%88%86/" rel="next" title="差分">
+                  差分 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -347,7 +348,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -358,13 +359,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">92k</span>
+    <span title="站点总字数">168k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:47</span>
+    <span title="站点阅读时长">5:06</span>
   </span>
 </div>
 <div class="busuanzi-count">

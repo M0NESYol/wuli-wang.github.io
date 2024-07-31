@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E5%A5%B6%E8%8C%B6.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E5%A5%B6%E8%8C%B6.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wuli-wang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="“XOR-MST”">
+<meta property="og:type" content="article">
+<meta property="og:title" content="约数">
+<meta property="og:url" content="https://wuli-wang.github.io/2021/11/06/%E6%9C%80%E5%B0%8F%E5%BC%82%E6%88%96%E7%94%9F%E6%88%90%E6%A0%91/index.html">
+<meta property="og:site_name" content="wuli-wang&#39;blog">
+<meta property="og:description" content="“XOR-MST”">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-06T11:42:15.000Z">
+<meta property="article:modified_time" content="2021-11-06T12:37:25.000Z">
+<meta property="article:author" content="wuli-wang">
+<meta property="article:tag" content="异或">
+<meta property="article:tag" content="最小生成树">
+<meta property="article:tag" content="字典树">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wuli-wang.github.io/2021/11/06/%E6%9C%80%E5%B0%8F%E5%BC%82%E6%88%96%E7%94%9F%E6%88%90%E6%A0%91/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wuli-wang.github.io/2021/11/06/%E6%9C%80%E5%B0%8F%E5%BC%82%E6%88%96%E7%94%9F%E6%88%90%E6%A0%91/","path":"2021/11/06/最小异或生成树/","title":"约数"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>约数 | wuli-wang'blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">wuli-wang'blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-albums"><a href="/albums/" rel="section"><i class="fa fa-camera fa-fw"></i>相册</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7-%E5%B0%8F%E5%BC%82%E6%88%96%E5%AF%B9"><span class="nav-number">1.</span> <span class="nav-text">最大&#x2F;小异或对</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E5%BC%82%E6%88%96%E7%94%9F%E6%88%90%E6%A0%91"><span class="nav-number">2.</span> <span class="nav-text">最小异或生成树</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="wuli-wang"
+      src="/images/avatar1.jpg">
+  <p class="site-author-name" itemprop="name">wuli-wang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wuli-wang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wuli-wang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wuli-wang.github.io/2021/11/06/%E6%9C%80%E5%B0%8F%E5%BC%82%E6%88%96%E7%94%9F%E6%88%90%E6%A0%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar1.jpg">
+      <meta itemprop="name" content="wuli-wang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wuli-wang'blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          约数
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-11-06 19:42:15 / 修改时间：20:37:25" itemprop="dateCreated datePublished" datetime="2021-11-06T19:42:15+08:00">2021-11-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+<center><font size="4">“XOR-MST”</font></center>
+</blockquote>
+<span id="more"></span>
+<h2 id="最大-小异或对"><a href="#最大-小异或对" class="headerlink" title="最大/小异或对"></a>最大/小异或对</h2><p>问：​ 在给定的n个整数里选出两个数进行异或运算，得到的结果最小是多少？</p>
+<p>思路：枚举第一个数x，在字典树中找与第一个数异或值最小的数（按位比较，若x此时为1，为了异或最小那么应该找1，没有1便只能找0，如此找下去，该值即与x异或值最小），然后再与最终结果取min。（最大同理）</p>
+<h2 id="最小异或生成树"><a href="#最小异或生成树" class="headerlink" title="最小异或生成树"></a>最小异或生成树</h2><p>题意：给定一个点，每个点都有一个价值，任意连个点的边权值为该两个点的价值的异或值，求最小生成树的值。</p>
+<ul>
+<li><p>若给出你一个数 例如是x时那么与x相连的y要是x^y最小那么，x和y的二进制除了最后一位不一样剩下的都一样这样才最小，最小为1.如果x没有对应的除了二进制最后一位不一样其他都一样的，就往前面推一位，不断地扩大代价尝试。这样保证代价最小。之后是让最后两位不一样…………以此类推因为这样才能保证最后的异或和最小。</p>
+</li>
+<li><p>现给定一个由五个数建成的01字典树,那么根据上面的规则，4一定跟5匹配就是我上面说的，从最后一位往前推看是否除了该位其他二进制位都一样，显然4有5作伴，而6最后一位没有匹配的，所以往前推一位那就是4跟他异或最小（这里体现的不是很明显，因为6往前推的时候4、5都满足条件，但是进过验证才知道4 xor 6比5 xor 6更小）。<br><a href="%E6%9C%80%E5%B0%8F%E5%BC%82%E6%88%96%E7%94%9F%E6%88%90%E6%A0%91/2.png">ok</a></p>
+</li>
+<li><p>下面给出一个更清晰的例子，若给出你2 ，3，5, 6四个数求这四个数的最小异或生成树，首先看2，根据上面说的他就是跟3匹配。然后看5,没有4，那么我们继续往上推没有7，接下来我们应该推最后一位 因为这样的代价只是2+1，而你要是再往前推得话他就是4所以我们要从小代价开始。所以就是6，因为生成树他是通路，所以2-3 和5-6 还差一条边也就是左树和右树合并最小。所以就得出这个分治思想：一个节点下的最小异或生成树 = 左子树自己连接 + 右子树连接 + 左右合并时产生的最小值。重点就是左右合并是产生的最小值，合并时的最小值的求法同上面最小异或对的求法。<br><a href="%E6%9C%80%E5%B0%8F%E5%BC%82%E6%88%96%E7%94%9F%E6%88%90%E6%A0%91/3.png">ok</a><br><a target="_blank" rel="noopener" href="https://codeforces.com/contest/888/problem/G">CF - G</a><br>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45911397/article/details/107671083">link</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;ll,ll&gt; pii;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> debug(x) cout &lt;&lt; #x &lt;&lt; <span class="meta-string">&quot;: &quot;</span> &lt;&lt; x &lt;&lt; endl;</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e7</span>+<span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">1e17</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod=<span class="number">998244353</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD=<span class="number">10007</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">bool</span> t=<span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">char</span> ch=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>((ch&lt;<span class="string">&#x27;0&#x27;</span>||ch&gt;<span class="string">&#x27;9&#x27;</span>)&amp;&amp;ch!=<span class="string">&#x27;-&#x27;</span>)ch=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">if</span>(ch==<span class="string">&#x27;-&#x27;</span>)t=<span class="literal">true</span>,ch=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">while</span>(ch&lt;=<span class="string">&#x27;9&#x27;</span>&amp;&amp;ch&gt;=<span class="string">&#x27;0&#x27;</span>)x=x*<span class="number">10</span>+ch<span class="number">-48</span>,ch=<span class="built_in">getchar</span>();</span><br><span class="line">	<span class="keyword">return</span> t?-x:x;</span><br><span class="line">&#125;</span><br><span class="line">ll a[maxn],n;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> cnt = <span class="number">0</span>;<span class="comment">//标记结点 就是记录第几个结点。这个就是字典树中的结点那个 </span></span><br><span class="line">	<span class="keyword">int</span> trie[maxn][<span class="number">2</span>];<span class="comment">//01字典树 </span></span><br><span class="line">	<span class="keyword">int</span> l[maxn],r[maxn];<span class="comment">//l 是最小用到这个结点的第几条边  r[]最大用到这个结点的第几条边 </span></span><br><span class="line">	<span class="function"><span class="keyword">void</span>  <span class="title">inint</span><span class="params">()</span></span>&#123;<span class="comment">//初始化 cnt=0； 就是返回根节点从头开始 </span></span><br><span class="line">		cnt=<span class="number">0</span>; </span><br><span class="line">	&#125; </span><br><span class="line">	<span class="comment">//构建01字典树</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(ll x,<span class="keyword">int</span> id)</span></span>&#123;<span class="comment">// x代表插入这个数 ，id代表第几个数 </span></span><br><span class="line">		<span class="keyword">int</span> gen=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">32</span>;i&gt;=<span class="number">0</span>;i--)&#123; <span class="comment">///从2进制最高位开始依次往下构建01字典树 </span></span><br><span class="line">			<span class="keyword">int</span> op =(x&gt;&gt;i&amp;<span class="number">1ll</span>)?<span class="number">1</span>:<span class="number">0</span>;<span class="comment">//判断这个x在该二进制位上是0还是1这样形成他的分叉 相当于 (x&gt;&gt;i)%2 也就是 判断他是左子树还是右子树 就是把x转化成2进制然后利用字典树从上往下排下来 </span></span><br><span class="line">			<span class="keyword">if</span>(!trie[gen][op])trie[gen][op]=++cnt;<span class="comment">//如果这个几点没用过就创建出来，并且标记出来他的节点号，也就是第几个节点 </span></span><br><span class="line">			gen=trie[gen][op];<span class="comment">//然后走他的下一位 换句话说 就是走 这个根节点的 下一个节点。</span></span><br><span class="line">			<span class="keyword">if</span>(!l[gen]) l[gen]=id;<span class="comment">//如果在此之前(x)没有任何数 有过该位的经历 说简单点就是这些数中没有比他小的且该位是op的。</span></span><br><span class="line">			r[gen]=id;<span class="comment">//一直更新最大使用这个的， </span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">ll <span class="title">answer</span><span class="params">(<span class="keyword">int</span> gen,<span class="keyword">int</span> pos,ll x)</span></span>&#123;<span class="comment">//gen代表第几位也就是 二进制的从头开始第几位，pos是从第几位开始计算 ，x是这个数 </span></span><br><span class="line">		ll ans=<span class="number">0</span>;<span class="comment">//初始值</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=pos;i&gt;=<span class="number">0</span>;i--)&#123;<span class="comment">//从pos开始往后遍历每一位 看每一位是否有对应的左右结点 </span></span><br><span class="line">			<span class="keyword">int</span> op=(x&gt;&gt;i&amp;<span class="number">1ll</span>)?<span class="number">1</span>:<span class="number">0</span>;<span class="comment">//分出x的i位2进制的01；</span></span><br><span class="line">			<span class="keyword">if</span>(trie[gen][op]) gen=trie[gen][op];<span class="comment">//如果右端点有对应的 子树（对应的0或1）就直接看下一层</span></span><br><span class="line">			<span class="keyword">else</span> &#123; <span class="comment">//没有对应的 </span></span><br><span class="line">				gen=trie[gen][!op];<span class="comment">//跟有对应的节点只能用另一节点来代替这时就会产生代价(1&lt;&lt;i),</span></span><br><span class="line">				ans+=(<span class="number">1ll</span>&lt;&lt;i);<span class="comment">//第i为产生代价 就加上该代价，之所以 是从pos 开始到0 是因为这样的话都可以选择最优 因为 i越大产生的代价就越大 所以尽量的让其前面的一致这样就会缩小代价 </span></span><br><span class="line">			&#125; </span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> ans; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">ll <span class="title">div</span><span class="params">(<span class="keyword">int</span> gen,<span class="keyword">int</span> pos)</span></span>&#123;<span class="comment">//gen 和pos 跟上面解释一样 </span></span><br><span class="line">		<span class="keyword">if</span>(trie[gen][<span class="number">0</span>]&amp;&amp;trie[gen][<span class="number">1</span>])&#123;<span class="comment">//如果既有左又有右   这一步就是左+右+合并 </span></span><br><span class="line">			<span class="keyword">int</span> x=trie[gen][<span class="number">0</span>],y=trie[gen][<span class="number">1</span>];<span class="comment">///x代表 左端点的结点号，y代表右端点的节点号，x&lt;y这是一定的 因为我们原本排序了 </span></span><br><span class="line">			ll minn=inf;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=l[x];i&lt;=r[x];i++)&#123;<span class="comment">//枚举左子树中从小到大的数 </span></span><br><span class="line">				minn=<span class="built_in">min</span>(minn,<span class="built_in">answer</span>(y,pos<span class="number">-1</span>,a[i])+(<span class="number">1</span>&lt;&lt;pos)); <span class="comment">//解释一下 answer(y,pos-1,a[i])+(1&lt;&lt;pos)  前面pos-1是看pos之后那些代价。而（1&lt;&lt;pos） 则是该位产生的代价 因为合并 你判断出这位是一个0和一个1 就一定会产生这个代价 （求最小异或对，便于后面面两棵子树的合并）</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> minn+<span class="built_in">div</span>(trie[gen][<span class="number">0</span>],pos<span class="number">-1</span>)+<span class="built_in">div</span>(trie[gen][<span class="number">1</span>],pos<span class="number">-1</span>);  <span class="comment">//合并+ 左+右  </span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(trie[gen][<span class="number">0</span>]) <span class="keyword">return</span> <span class="built_in">div</span>(trie[gen][<span class="number">0</span>],pos<span class="number">-1</span>);<span class="comment">//如果只有左就直接是左 </span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(trie[gen][<span class="number">1</span>]) <span class="keyword">return</span> <span class="built_in">div</span>(trie[gen][<span class="number">1</span>],pos<span class="number">-1</span>);<span class="comment">//如果只有右就直接是右 </span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//如果都没有，肯定是0</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;trie;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> read read()</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"> 	trie.<span class="built_in">inint</span>();<span class="comment">//初始化 </span></span><br><span class="line">   	<span class="built_in">sf</span>(<span class="string">&quot;%lld&quot;</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">sf</span>(<span class="string">&quot;%lld&quot;</span>,&amp;a[i]);</span><br><span class="line">    <span class="built_in">sort</span>(a+<span class="number">1</span>,a+<span class="number">1</span>+n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) trie.<span class="built_in">insert</span>(a[i],i);</span><br><span class="line">    <span class="comment">///tire.Traceback(0);</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,trie.<span class="built_in">div</span>(<span class="number">0</span>,<span class="number">32</span>));</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%BC%82%E6%88%96/" rel="tag"># 异或</a>
+              <a href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" rel="tag"># 最小生成树</a>
+              <a href="/tags/%E5%AD%97%E5%85%B8%E6%A0%91/" rel="tag"># 字典树</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/31/Thinking/" rel="prev" title="Thinking">
+                  <i class="fa fa-chevron-left"></i> Thinking
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/11/08/CF/" rel="next" title="CodeForces">
+                  CodeForces <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wuli-wang</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">168k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">5:06</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: '32px',
+  left: 'unset',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+<script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(i){i.imageLazyLoadSetting.processImages=a;var n=i.imageLazyLoadSetting.isSPA,o=i.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function a(){n&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,e,a=0;a<r.length;a++)t=r[a],e=void 0,0<=(e=t.getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(i.innerHeight*o||document.documentElement.clientHeight*o)&&function(){var t,e,i,n,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},i=new Image,n=t.getAttribute("data-original"),i.onload=function(){t.src=n,e&&e()},t.src!==n&&(i.src=n)}()}a(),i.addEventListener("scroll",function(){var t,e;t=a,e=i,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+</html>
