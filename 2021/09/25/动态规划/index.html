@@ -7,40 +7,40 @@
 <meta name="generator" content="Hexo 5.4.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E5%A5%B6%E8%8C%B6.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E5%A5%B6%E8%8C%B6.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/wuli-wang.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/wuli-wang.github.io/images/%E5%A5%B6%E8%8C%B6.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/wuli-wang.github.io/images/%E5%A5%B6%E8%8C%B6.png">
+  <link rel="mask-icon" href="/wuli-wang.github.io/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/wuli-wang.github.io/css/main.css">
 
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"wuli-wang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"m0nesyol.github.io","root":"/wuli-wang.github.io/","images":"/wuli-wang.github.io/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/wuli-wang.github.io/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/wuli-wang.github.io/js/config.js"></script>
 <meta name="description" content="“&lt; DP &gt;&gt;”">
 <meta property="og:type" content="article">
 <meta property="og:title" content="动态规划">
-<meta property="og:url" content="https://wuli-wang.github.io/2021/09/25/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/index.html">
+<meta property="og:url" content="https://m0nesyol.github.io/wuli-wang.github.io/2021/09/25/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/index.html">
 <meta property="og:site_name" content="wuli-wang&#39;blog">
 <meta property="og:description" content="“&lt; DP &gt;&gt;”">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://wuli-wang.github.io/images/loading.png">
+<meta property="og:image" content="https://m0nesyol.github.io/images/loading.png">
 <meta property="article:published_time" content="2021-09-25T01:58:05.000Z">
 <meta property="article:modified_time" content="2022-06-16T08:13:47.000Z">
 <meta property="article:author" content="wuli-wang">
 <meta property="article:tag" content="DP">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://wuli-wang.github.io/images/loading.png">
+<meta name="twitter:image" content="https://m0nesyol.github.io/images/loading.png">
 
 
-<link rel="canonical" href="https://wuli-wang.github.io/2021/09/25/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+<link rel="canonical" href="https://m0nesyol.github.io/wuli-wang.github.io/2021/09/25/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wuli-wang.github.io/2021/09/25/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/","path":"2021/09/25/动态规划/","title":"动态规划"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://m0nesyol.github.io/wuli-wang.github.io/2021/09/25/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/","path":"2021/09/25/动态规划/","title":"动态规划"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>动态规划 | wuli-wang'blog</title>
@@ -50,7 +50,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
+    <link rel="stylesheet" href="/wuli-wang.github.io/css/noscript.css">
   </noscript>
 <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}</style></head>
 
@@ -70,7 +70,7 @@
 
   <div class="site-meta">
 
-    <a href="/" class="brand" rel="start">
+    <a href="/wuli-wang.github.io/" class="brand" rel="start">
       <i class="logo-line"></i>
       <h1 class="site-title">wuli-wang'blog</h1>
       <i class="logo-line"></i>
@@ -88,11 +88,11 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
-        <li class="menu-item menu-item-albums"><a href="/albums/" rel="section"><i class="fa fa-camera fa-fw"></i>相册</a></li>
+        <li class="menu-item menu-item-home"><a href="/wuli-wang.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/wuli-wang.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/wuli-wang.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/wuli-wang.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-albums"><a href="/wuli-wang.github.io/albums/" rel="section"><i class="fa fa-camera fa-fw"></i>相册</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -157,25 +157,25 @@
           <div class="site-overview">
             <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="wuli-wang"
-      src="/images/avatar1.jpg">
+      src="/wuli-wang.github.io/images/avatar1.jpg">
   <p class="site-author-name" itemprop="name">wuli-wang</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="/archives/">
+        <a href="/wuli-wang.github.io/archives/">
           <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-          <a href="/categories/">
+          <a href="/wuli-wang.github.io/categories/">
         <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-          <a href="/tags/">
+          <a href="/wuli-wang.github.io/tags/">
         <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -221,10 +221,10 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wuli-wang.github.io/2021/09/25/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+    <link itemprop="mainEntityOfPage" href="https://m0nesyol.github.io/wuli-wang.github.io/2021/09/25/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar1.jpg">
+      <meta itemprop="image" content="/wuli-wang.github.io/images/avatar1.jpg">
       <meta itemprop="name" content="wuli-wang">
       <meta itemprop="description" content="">
     </span>
@@ -260,7 +260,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DP/" itemprop="url" rel="index"><span itemprop="name">DP</span></a>
+          <a href="/wuli-wang.github.io/categories/DP/" itemprop="url" rel="index"><span itemprop="name">DP</span></a>
         </span>
     </span>
 
@@ -420,7 +420,7 @@
 <ul>
 <li>容易想到每次枚举一个根节点，设立状态f[x]表示以该节点为根的子树能够流出的最大流量，那么状态转移方程为$A(x)=\sum_{y邻接x}min(A(y),e(x,y))$,然后利用树形dp即可暴力求得最大值。</li>
 <li>但是由于父节点与儿子结点的特殊关系，可以对二者进行换根，由此可以利用之前计算的结果来更快的算出每个A(x)。</li>
-<li>我们发现换根后，x的流量就没有了y的部分，其他都还在，此时x的流量就是原本的减去从y流向x的部分，new[x]=flow[ x ] - min ( flow[ y ] , edge[ x ] [ y ] ),这个new表示x新的流量<br>我们再看y，y的流量多了从x流来的部分，y的流量就是flow[y]+min(new[x],edge[x][y])，因为换根x的流量发生改变。直接上图，帮助理解<img src="/images/loading.png" data-original="/2021/09/25/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E6%8D%A2%E6%A0%B9.png" alt="换根图"></li>
+<li>我们发现换根后，x的流量就没有了y的部分，其他都还在，此时x的流量就是原本的减去从y流向x的部分，new[x]=flow[ x ] - min ( flow[ y ] , edge[ x ] [ y ] ),这个new表示x新的流量<br>我们再看y，y的流量多了从x流来的部分，y的流量就是flow[y]+min(new[x],edge[x][y])，因为换根x的流量发生改变。直接上图，帮助理解<img src="/images/loading.png" data-original="/wuli-wang.github.io/wuli-wang.github.io/2021/09/25/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E6%8D%A2%E6%A0%B9.png" alt="换根图"></li>
 <li>d[y]表示以1号结点为根时以y节点为根的子树能够流出的最大流量,也就是上图中的flow[y]。</li>
 <li>注意根节点只有一颗子树的情形和孩子结点为叶子的情形，这两种情况进行换根时计算方式与一般情形有所区别。</li>
 </ul>
@@ -450,19 +450,19 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/DP/" rel="tag"># DP</a>
+              <a href="/wuli-wang.github.io/tags/DP/" rel="tag"># DP</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/09/07/Data-Structure/" rel="prev" title="Data Structure">
+                <a href="/wuli-wang.github.io/2021/09/07/Data-Structure/" rel="prev" title="Data Structure">
                   <i class="fa fa-chevron-left"></i> Data Structure
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/09/28/%E5%90%AF%E5%8F%91%E5%BC%8F%E5%90%88%E5%B9%B6/" rel="next" title="启发式合并">
+                <a href="/wuli-wang.github.io/2021/09/28/%E5%90%AF%E5%8F%91%E5%BC%8F%E5%90%88%E5%B9%B6/" rel="next" title="启发式合并">
                   启发式合并 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
@@ -534,10 +534,10 @@
   
   <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+<script src="/wuli-wang.github.io/js/comments.js"></script><script src="/wuli-wang.github.io/js/utils.js"></script><script src="/wuli-wang.github.io/js/motion.js"></script><script src="/wuli-wang.github.io/js/next-boot.js"></script>
 
   
-<script src="/js/third-party/search/local-search.js"></script>
+<script src="/wuli-wang.github.io/js/third-party/search/local-search.js"></script>
 
 
 
@@ -551,7 +551,7 @@
   
 
   <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
-<script src="/js/third-party/math/mathjax.js"></script>
+<script src="/wuli-wang.github.io/js/third-party/math/mathjax.js"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
